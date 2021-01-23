@@ -11,21 +11,22 @@ function setCharBtnState(btn, pressed) {
   }
 }
 
-
-
-function setupRosterMenu(game) {
+function setupGame(game) {
   let menu = $("#roster-menu select");
   $.ajax({
-    url: 'games/rosters.json',
+    url: 'games/games.json',
     dataType: 'json',
     async: false,
     success: function (data) {
-      let names = data[game];
+      let game_data = data[game]
+      let names = game_data["rosters"];
       names.reverse();
       names.forEach(function(name) {
         let elt = $('<option value="' + name + '">' + name + '</option>');
         menu.prepend(elt);
       });
+      let credits = game_data["credits"];
+      $("#icon-credits").html("Icon credits: " + credits);
     }
   });
 }

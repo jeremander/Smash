@@ -39,16 +39,15 @@
 
     <div id="roster-menu">
       <select>
-        <!-- {% for dist in dists %}
-        <option value="{{dist}}">{{dist}}</option>
-        {% endfor %} -->
         <option value="Custom">Custom</option>
       </select>
-      <button id="refresh-roster" class="btn btn-primary btn-push">&#8634;</button>
+      <button id="refresh-roster" type="button" class="btn btn-primary btn-push" data-toggle="tooltip" data-placement="right" title="Reset weights">&#8634;</button>
     </div>
 
     <br>
     <div class="grid-container" id="char-list"></div>
+    <br>
+    <div id="icon-credits"></div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

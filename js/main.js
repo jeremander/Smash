@@ -2,6 +2,12 @@ const defaultGame = "SSBM";
 
 $(document).ready(function () {
 
+  // enable tooltips globally
+  $(function() {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
+
+  // load game title from cache (default otherwise)
   let game = localStorage.getItem("game-title");
   if (game === null) {
     game = defaultGame;
@@ -11,7 +17,7 @@ $(document).ready(function () {
   $(".card-header h2").text(game + " Character");
 
   // place available rosters in menu
-  setupRosterMenu(game);
+  setupGame(game);
 
   // load characters
   loadCharacters(game);
