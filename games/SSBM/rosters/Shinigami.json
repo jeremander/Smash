@@ -1,0 +1,31 @@
+{
+  "game": "SSBM",
+  "char_weights": {
+    "Dr. Mario": 6,
+    "Mario": 6,
+    "Luigi": 7,
+    "Bowser": 3,
+    "Peach": 10,
+    "Yoshi": 6,
+    "Donkey Kong": 5,
+    "Captain Falcon": 8,
+    "Ganondorf": 6,
+    "Falco": 9,
+    "Fox": 9,
+    "Ness": 4,
+    "Ice Climbers": 7,
+    "Kirby": 4,
+    "Samus": 7,
+    "Zelda": 3,
+    "Sheik": 10,
+    "Link": 6,
+    "Young Link": 5,
+    "Pichu": 3,
+    "Pikachu": 8,
+    "Jigglypuff": 8,
+    "Mewtwo": 5,
+    "Mr. Game & Watch": 4,
+    "Marth": 10,
+    "Roy": 3
+  }
+}

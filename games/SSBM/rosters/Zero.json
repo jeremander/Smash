@@ -1,0 +1,31 @@
+{
+  "game": "SSBM",
+  "char_weights": {
+    "Dr. Mario": 0,
+    "Mario": 0,
+    "Luigi": 0,
+    "Bowser": 0,
+    "Peach": 0,
+    "Yoshi": 0,
+    "Donkey Kong": 0,
+    "Captain Falcon": 0,
+    "Ganondorf": 0,
+    "Falco": 0,
+    "Fox": 0,
+    "Ness": 0,
+    "Ice Climbers": 0,
+    "Kirby": 0,
+    "Samus": 0,
+    "Zelda": 0,
+    "Sheik": 0,
+    "Link": 0,
+    "Young Link": 0,
+    "Pichu": 0,
+    "Pikachu": 0,
+    "Jigglypuff": 0,
+    "Mewtwo": 0,
+    "Mr. Game & Watch": 0,
+    "Marth": 0,
+    "Roy": 0
+  }
+}

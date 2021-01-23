@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Random Character</title>
+  </head>
+
+  <body>
+
+    <div class="game-title" hidden>Game</div>
+
+    <div class="card mb-3" id="content">
+      <div class="card-header"><h2></h2></div>
+      <div class="card-body">
+        <div class="character">
+          <p>
+            <span id="char-name"></span>
+            <img id="char-img" class="char-icon" src="blank.png" align="middle"></img>
+          </p>
+        </div>
+        <br>
+        <button class="btn btn-primary btn-push" id="random">Random</button>
+        <div class="form-check" id="no-repeat-check-form">
+          <input class="form-check-input" type="checkbox" value="" id="no-repeat-check">
+          <label class="form-check-label" for="no-repeat-check">
+            No Repeats
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div id="roster-menu">
+      <select>
+        <!-- {% for dist in dists %}
+        <option value="{{dist}}">{{dist}}</option>
+        {% endfor %} -->
+        <option value="Custom">Custom</option>
+      </select>
+      <button id="refresh-roster" class="btn btn-primary btn-push">&#8634;</button>
+    </div>
+
+    <br>
+    <div class="grid-container" id="char-list"></div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="js/roster.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
+
