@@ -273,7 +273,7 @@ function loadCharacters(game, force = false) {
       dataType: 'json',
       async: false,
       success: function (data) {
-        roster.init(data.game, dist, data.char_weights, no_repeats);
+        roster.init(game, dist, data.char_weights, no_repeats);
       }
     });
     roster.cacheCharacters();
