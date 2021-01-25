@@ -121,11 +121,21 @@ button#random {
   font-size: 8pt;
 }
 
+/* @media only screen and (min-width: 992px) { */
 .tooltip-inner {
-    background-color: var(--tooltip-color);
+  background-color: var(--tooltip-color);
 }
 .tooltip.bs-tooltip-right .arrow:before {
-    border-right-color: var(--tooltip-color);
+  border-right-color: var(--tooltip-color);
+}
+.tooltip.bs-tooltip-left .arrow:before {
+  border-left-color: var(--tooltip-color);
+}
+
+@media only screen and (max-width: 767px) {
+  .tooltip-inner, .tooltip.bs-tooltip-right .arrow:before, .tooltip.bs-tooltip-left .arrow:before {
+    visibility: hidden;
+  }
 }
 
 #char-list {
