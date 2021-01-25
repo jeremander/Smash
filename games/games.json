@@ -1,6 +1,6 @@
 {
   "SSBM": {
     "rosters": ["Default", "Equal", "Tiers SAB", "Tiers SABCD", "Starters"],
-    "credits": "<a href=\"https://www.ssbwiki.com\">SmashWiki</a>"
+    "credits": "<a href=\"https://www.ssbwiki.com\" target=\"_blank\">SmashWiki</a>"
   }
 }
