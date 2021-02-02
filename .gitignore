@@ -1,8 +1,3 @@
 __pycache__/
 venv/
-*.json
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+games/SSBU/img_orig

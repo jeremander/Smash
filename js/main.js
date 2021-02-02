@@ -1,4 +1,3 @@
-const defaultGame = "SSBM";
 
 $(document).ready(function () {
 
@@ -7,24 +6,13 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
 
-  // load game title from cache (default otherwise)
-  let game = localStorage.getItem("game-title");
-  if (game === null) {
-    game = defaultGame;
-  }
+  let game = getCurrentGame();
 
-  // fill in game title
-  $(".card-header h2").text(game + " Character");
-
-  // place available rosters in menu
+  // lay out game data
   setupGame(game);
 
-  // load characters
-  loadCharacters(game);
-  roster.randomPressed();
-
   // "Random" button pressed
-  $("#random").click(function() {
+  $("#random-button").click(function() {
     roster.randomPressed();
   });
 
@@ -47,5 +35,7 @@ $(document).ready(function () {
     // reset the roster with the current distribution
     loadCharacters(game, true)
   });
+
+  setupGameSelectionModal();
 
 });

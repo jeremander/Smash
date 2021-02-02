@@ -1,3 +1,33 @@
+const defaultGame = "SSBM";
+
+function getCurrentGame() {
+  // load game title from cache (otherwise, use default)
+  let game = localStorage.getItem("game-title");
+  if (game === null) {
+    return defaultGame;
+  }
+  return game;
+}
+
+function getGameData() {
+  const key = "game-data";
+  // attempt to fetch from cache
+  let gameDataStr = localStorage.getItem(key);
+  if (gameDataStr == null) {  // fetch from server
+    $.ajax({
+      url: 'games/games.json',
+      dataType: 'json',
+      async: false,
+      success: function (data) {
+        let gameDataStr = JSON.stringify(data);
+        localStorage.setItem(key, JSON.stringify(data));
+      }
+    });
+    gameDataStr = localStorage.getItem(key);
+  }
+  return JSON.parse(gameDataStr);
+}
+
 function setCharBtnState(btn, pressed) {
   if (pressed) {
     btn.css("filter", "brightness(55%) opacity(67%)");
@@ -9,26 +39,6 @@ function setCharBtnState(btn, pressed) {
     btn.css("transform", "");
     btn.data("pressed", false);
   }
-}
-
-function setupGame(game) {
-  let menu = $("#roster-menu select");
-  $.ajax({
-    url: 'games/games.json',
-    dataType: 'json',
-    async: false,
-    success: function (data) {
-      let game_data = data[game]
-      let names = game_data["rosters"];
-      names.reverse();
-      names.forEach(function(name) {
-        let elt = $('<option value="' + name + '">' + name + '</option>');
-        menu.prepend(elt);
-      });
-      let credits = game_data["credits"];
-      $("#icon-credits").html("Icon credits: " + credits);
-    }
-  });
 }
 
 class Roster {
@@ -185,6 +195,7 @@ class Roster {
     $(".incr").click(function(e) {
       roster._changeFreq(e, x => x + 1, x => x >= 10, ".decr");
     });
+
   }
 
   // random character as a string
@@ -284,4 +295,48 @@ function loadCharacters(game, force = false) {
     roster.init(obj.game, obj.dist, obj.char_weights, no_repeats);
   }
   roster.initElements();
+}
+
+function setupGame(game) {
+  // fill in game title
+  $(".card-header h2").text(game + " Character");
+  // set up roster menu
+  let menu = $("#roster-menu select");
+  let game_data = getGameData()[game];
+  let names = game_data["rosters"];
+  names.reverse();
+  names.forEach(function (name) {
+    let elt = $('<option value="' + name + '">' + name + '</option>');
+    menu.prepend(elt);
+  });
+  // load characters
+  loadCharacters(game);
+  roster.randomPressed();
+  // display icon credits
+  let credits = game_data["credits"];
+  $("#icon-credits").html("Icon credits: " + credits);
+}
+
+function setupGameSelectionModal() {
+  let table = $("#game-select-table");
+  let game_data = getGameData();
+  let game = getCurrentGame();
+  Object.keys(game_data).forEach(function (key) {
+    let label = $('<div class="game-select-name">' + game_data[key]['name'] + '</div>');
+    let radio_div = $('<div class="game-select-option"></div>');
+    let radio = $(`<input type="radio" name="game" class="game-select-radio" value="${key}">`);
+    if (key == game) {
+      radio.prop("checked", true);
+    }
+    radio_div.append(radio);
+    table.append(label, radio_div);
+  });
+  // handle 'OK' click (changes game)
+  $("#game-select-ok").click(function() {
+    let game = $('.game-select-radio:checked')[0].value;
+    if (game != getCurrentGame()) {
+      localStorage.setItem("game-title", game);
+      setupGame(game);
+    }
+  });
 }

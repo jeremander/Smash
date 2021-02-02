@@ -19,25 +19,73 @@
 
     <div class="card mb-3" id="content">
       <div id="content-inner">
-        <div class="card-header"><h2></h2></div>
+        <div class="card-header">
+          <h2></h2>
+        </div>
         <div class="card-body">
           <div class="character">
-            <p>
-              <span id="char-name"></span>
+            <div id="char-name"></div>
+            <div id="char-img-container">
               <img id="char-img" class="char-icon" src="blank.png" align="middle"></img>
-            </p>
+            </div>
           </div>
-          <br>
-          <button class="btn btn-primary btn-push" id="random">Random</button>
-          <div class="form-check" id="no-repeat-check-form">
-            <input class="form-check-input" type="checkbox" value="" id="no-repeat-check">
-            <label class="form-check-label" for="no-repeat-check">
-              No Repeats
-            </label>
+          <div id="user-controls">
+            <div id="game-select-container">
+              <button id="game-select" class="btn btn-primary btn-push" data-toggle="modal" data-target="#game-select-modal">&#x1F3AE;</button>
+            </div>
+            <div id="random-button-container">
+              <button id="random-button" class="btn btn-primary btn-push">Random</button>
+            </div>
+            <div id="no-repeat-check-form" class="form-check">
+              <div>
+                <input class="form-check-input" type="checkbox" value="" id="no-repeat-check">
+                <label class="form-check-label" for="no-repeat-check">
+                  No Repeats
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Game Select Modal -->
+    <div id="game-select-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Choose a Game</h4>
+          </div>
+          <div class="modal-body">
+            <div id="game-select-table">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="game-select-ok" class="btn btn-primary" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="test-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
     <div id="roster-menu">
       <select>
