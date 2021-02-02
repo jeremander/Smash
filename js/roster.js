@@ -111,7 +111,7 @@ class Roster {
   cacheCharacters() {
     let rosterStr = JSON.stringify(this);
     localStorage.setItem(this.game + "-roster", rosterStr);
-    let dist = localStorage.getItem("roster-dist");
+    let dist = localStorage.getItem(this.game + "-roster-dist");
     if (dist == "Custom") {
       // save the default roster as Custom
       localStorage.setItem(this.game + "-default-roster", rosterStr);
@@ -256,8 +256,9 @@ class Roster {
 var roster = new Roster();
 
 // load character data, initialize page
-function loadCharacters(game, force = false) {
-  let dist = localStorage.getItem("roster-dist");
+function loadCharacters(force = false) {
+  let game = getCurrentGame();
+  let dist = localStorage.getItem(game + "-roster-dist");
   if (dist === null) {
     dist = "Default";
   }
@@ -297,20 +298,26 @@ function loadCharacters(game, force = false) {
   roster.initElements();
 }
 
-function setupGame(game) {
+function setupGame() {
+  let game = getCurrentGame();
   // fill in game title
   $(".card-header h2").text(game + " Character");
   // set up roster menu
   let menu = $("#roster-menu select");
+  menu.empty();
   let game_data = getGameData()[game];
   let names = game_data["rosters"];
   names.reverse();
+  function getMenuItem(name) {
+    return $('<option value="' + name + '">' + name + '</option>');
+  }
   names.forEach(function (name) {
-    let elt = $('<option value="' + name + '">' + name + '</option>');
+    let elt = getMenuItem(name);
     menu.prepend(elt);
   });
+  menu.append(getMenuItem("Custom"));
   // load characters
-  loadCharacters(game);
+  loadCharacters();
   roster.randomPressed();
   // display icon credits
   let credits = game_data["credits"];
@@ -336,7 +343,7 @@ function setupGameSelectionModal() {
     let game = $('.game-select-radio:checked')[0].value;
     if (game != getCurrentGame()) {
       localStorage.setItem("game-title", game);
-      setupGame(game);
+      setupGame();
     }
   });
 }

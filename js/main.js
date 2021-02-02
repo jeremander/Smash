@@ -6,10 +6,8 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
 
-  let game = getCurrentGame();
-
   // lay out game data
-  setupGame(game);
+  setupGame();
 
   // "Random" button pressed
   $("#random-button").click(function() {
@@ -25,15 +23,16 @@ $(document).ready(function () {
   $("#roster-menu select").change(function(e) {
     // cache the distribution
     let dist = $(this).children("option:selected").val();
-    localStorage.setItem("roster-dist", dist);
+    let game = getCurrentGame();
+    localStorage.setItem(game + "-roster-dist", dist);
     // reload the roster with the chosen distribution
-    loadCharacters(game, true);
+    loadCharacters(true);
   });
 
   // refresh button pressed
   $("#refresh-roster").click(function() {
     // reset the roster with the current distribution
-    loadCharacters(game, true)
+    loadCharacters(true)
   });
 
   setupGameSelectionModal();
