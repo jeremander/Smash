@@ -1,7 +1,7 @@
 {
   "SSBM": {
     "name": "Super Smash Bros. Melee",
-    "rosters": ["Default", "Equal", "Tiers SAB", "Tiers SABCD", "Starters"],
+    "rosters": ["Default", "Equal", "Tiers SAB+", "Starters"],
     "credits": "<a href=\"https://www.ssbwiki.com\" target=\"_blank\">SmashWiki</a>"
   },
   "SSBU": {

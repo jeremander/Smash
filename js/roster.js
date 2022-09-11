@@ -19,7 +19,6 @@ function getGameData() {
       dataType: 'json',
       async: false,
       success: function (data) {
-        let gameDataStr = JSON.stringify(data);
         localStorage.setItem(key, JSON.stringify(data));
       }
     });
